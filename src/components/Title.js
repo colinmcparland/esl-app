@@ -1,21 +1,31 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 class Title extends Component{
   render() {
+
+  const {
+    name,
+    date
+  } = this.props;
+
     return (
       <div
         style={{
           borderTop: '3px solid green',
-          borderRadius: '5px'
         }}
       >
-        <h1>Sample Tournament Title</h1>
+        <h1>{ name }</h1>
         <p>
-          <small>11/11/2011</small>
+          <small>{ date && moment(date).format('LLL') }</small>
         </p>
       </div>
     );
   }
+}
+
+Title.defaultProps = {
+  name: 'Loading...'
 }
 
 export default Title;
