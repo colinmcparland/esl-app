@@ -2,8 +2,16 @@ import React, { Component } from 'react';
 import style from 'styled-components';
 
 class Dropdown extends Component {
-  render() {
 
+  render() {
+    const {
+      onToggle,
+      sortGamesAsc
+    } = this.props;
+
+    /*
+      Create a styled component for the dropdown button
+     */
     const DropdownButton = style.button`
       border-radius: 0;
       background-color: #fff;
@@ -14,8 +22,15 @@ class Dropdown extends Component {
 
     return (
       <div>
-        <DropdownButton>
-          Date &#9650;
+        <DropdownButton
+          onClick={ onToggle }
+        >
+          Date&nbsp;
+          {
+            sortGamesAsc ?
+              "\u25B2" :
+              "\u25BC"
+          }
         </DropdownButton>
       </div>
     );

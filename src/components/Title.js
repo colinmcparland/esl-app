@@ -1,31 +1,39 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import style from 'styled-components';
 
 class Title extends Component{
-  render() {
 
-  const {
-    name,
-    date
-  } = this.props;
+  render() {
+    const {
+      name,
+      date
+    } = this.props;
+
+    /*
+      Styled components for the title container and for the title itself
+     */
+    const TitleContainer = style.div`
+      border-top: 5px solid #28B662;
+      margin-bottom: 25px;
+      padding: 15px;
+      border-radius: 4px;
+    `;
+
+    const Header = style.h3`
+      margin-bottom: 5px;
+      margin-top: 0;
+    `;
 
     return (
-      <div
-        style={{
-          borderTop: '5px solid #28B662',
-          marginBottom: '25px',
-          padding: '15px',
-          borderRadius: '4px',
-        }}
-      >
-        <h3 style={{ 
-          marginBottom: '5px',
-          marginTop: '0'
-        }}>{ name }</h3>
+      <TitleContainer>
+        <Header>
+          { name }
+        </Header>
         <span>
           <small>{ date && moment(date).format('Do MMMM YYYY') }</small>
         </span>
-      </div>
+      </TitleContainer>
     );
   }
 }

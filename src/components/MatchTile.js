@@ -5,7 +5,6 @@ import style from 'styled-components';
 class MatchTile extends Component {
 
   render() {
-
     const {
       winner,
       loser, 
@@ -14,6 +13,9 @@ class MatchTile extends Component {
       date
     } = this.props;
 
+    /*
+      Styled component for a score row
+     */
     const TileRow = style.div`
       padding-bottom: 15px;
       margin-bottom: 15px;
@@ -26,6 +28,9 @@ class MatchTile extends Component {
       }
     `;
 
+    /*
+      Base styled component for the winner and loser rows
+     */
     const CompetitorRow = style.div`
       display: flex;
       justify-content: space-between;

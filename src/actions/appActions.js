@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+/*
+  Get the tournament data and dispatch it to the redux store
+ */
 const getTournament = leagueId => dispatch => (
   new Promise((resolve, reject) => {
     return axios.get(`https://api.eslgaming.com/play/v1/leagues/${leagueId}`)
@@ -12,10 +15,17 @@ const getTournament = leagueId => dispatch => (
           }
         }));
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        resolve(dispatch({
+          type: 'DATA_ERROR'
+        }));
+      });
   })
 );
 
+/*
+  Get the contestant data and dispatch it to the redux store
+ */
 const getContestants = leagueId => dispatch => (
   new Promise((resolve, reject) => {
     return axios.get(`https://api.eslgaming.com/play/v1/leagues/${leagueId}/contestants`)
@@ -25,10 +35,17 @@ const getContestants = leagueId => dispatch => (
           payload: result.data
         }));
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        resolve(dispatch({
+          type: 'DATA_ERROR'
+        }));
+      });
   })
 );
 
+/*
+  Get the result data and dispatch it to the redux store
+ */
 const getResults = leagueId => dispatch => (
   new Promise((resolve, reject) => {
     return axios.get(`https://api.eslgaming.com/play/v1/leagues/${leagueId}/results`)
@@ -38,7 +55,11 @@ const getResults = leagueId => dispatch => (
           payload: result.data
         }));
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        resolve(dispatch({
+          type: 'DATA_ERROR'
+        }));
+      });
   })
 );
 

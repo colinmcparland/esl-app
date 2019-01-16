@@ -9,21 +9,42 @@ import style from 'styled-components';
 class Frame extends Component {
 
   componentDidMount() {
+    /*
+      Get the redux actions
+     */
     const {
       getTournament,
       getContestants,
       getResults
     } = this.props;
 
-    getTournament('177161');
-    getContestants('177161');
-    getResults('177161');
+    /*
+      Get the ID of this tournament
+     */
+    const tournamentId = window.location.pathname.split('/')[1];
+
+    /*
+      Fetch API data in parallel when component mounts
+     */
+    Promise.all([
+      getTournament(tournamentId),
+      getContestants(tournamentId),
+      getResults(tournamentId)
+    ]);
   }
 
-  componentWillReceiveProps
-
   render() {
+    const {
+      tournamentName,
+      tournamentDate,
+      contestants,
+      results,
+      error
+    } = this.props;
 
+    /*
+      Styled components for each section and for the frame itself
+     */
     const SectionWrapper = style.div`
       width: 500px;
       display: block;
@@ -38,18 +59,11 @@ class Frame extends Component {
       background-color: #EBECEE;
     `;
 
-    const {
-      tournamentName,
-      tournamentDate,
-      contestants,
-      results
-    } = this.props;
-
     return (
       <FrameWrapper>
         <SectionWrapper>
           <Title
-            name={ tournamentName }
+            name={ tournamentName || error }
             date={ tournamentDate }
           >
           </Title>
@@ -65,23 +79,24 @@ class Frame extends Component {
   }
 }
 
-Frame.propTypes = {};
-Frame.defaultProps = {};
-
 function mapStateToProps(state) {
-
+  /*
+    Get the API data from the redux state, pass it to props
+   */
   const {
     tournamentName,
     tournamentDate,
     contestants,
-    results
+    results,
+    error
   } = state.app;
 
   return {
     tournamentName,
     tournamentDate,
     contestants,
-    results
+    results,
+    error
   };
 }
 
