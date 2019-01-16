@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Dropdown from 'components/Dropdown';
 import MatchTile from 'components/MatchTile';
+import style from 'styled-components';
 
 class MatchContainer extends Component {
 
@@ -11,16 +12,17 @@ class MatchContainer extends Component {
       results
     } = this.props;
 
+    const FilterContainer = style.div`
+      display: flex;
+      justify-content: flex-end;
+      padding: 15px;
+    `;
+
     return (
       <div>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'flex-end'
-          }}
-        >
+        <FilterContainer>
           <Dropdown></Dropdown>
-        </div>
+        </FilterContainer>
         {
           results && contestants && results.map((result, index) => {
 

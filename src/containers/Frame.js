@@ -4,6 +4,7 @@ import MatchContainer from 'containers/MatchContainer';
 import { default as appActions } from 'actions/appActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import style from 'styled-components';
 
 class Frame extends Component {
 
@@ -23,12 +24,19 @@ class Frame extends Component {
 
   render() {
 
-    const containerDivStyle = {
-      width: '400px',
-      display: 'block',
-      margin: '0 auto',
-      backgroundColor: '#fff'
-    };
+    const SectionWrapper = style.div`
+      width: 500px;
+      display: block;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0px 0px 15px rgba(0,0,0,0.05);
+    `;
+
+    const FrameWrapper = style.div`
+      padding: 25px 0;
+      background-color: #EBECEE;
+    `;
 
     const {
       tournamentName,
@@ -38,26 +46,21 @@ class Frame extends Component {
     } = this.props;
 
     return (
-      <div
-        style={{
-          padding: '25px 0',
-          backgroundColor: '#cfcfcf'
-        }}
-      >
-        <div style={ containerDivStyle }>
+      <FrameWrapper>
+        <SectionWrapper>
           <Title
             name={ tournamentName }
             date={ tournamentDate }
           >
           </Title>
-        </div>
-        <div style={ containerDivStyle }>
+        </SectionWrapper>
+        <SectionWrapper>
           <MatchContainer
             contestants={ contestants }
             results={ results }
           ></MatchContainer>
-        </div>
-      </div>
+        </SectionWrapper>
+      </FrameWrapper>
     );
   }
 }

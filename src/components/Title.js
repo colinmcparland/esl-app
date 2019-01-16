@@ -12,13 +12,19 @@ class Title extends Component{
     return (
       <div
         style={{
-          borderTop: '3px solid green',
+          borderTop: '5px solid #28B662',
+          marginBottom: '25px',
+          padding: '15px',
+          borderRadius: '4px',
         }}
       >
-        <h1>{ name }</h1>
-        <p>
-          <small>{ date && moment(date).format('LLL') }</small>
-        </p>
+        <h3 style={{ 
+          marginBottom: '5px',
+          marginTop: '0'
+        }}>{ name }</h3>
+        <span>
+          <small>{ date && moment(date).format('Do MMMM YYYY') }</small>
+        </span>
       </div>
     );
   }
