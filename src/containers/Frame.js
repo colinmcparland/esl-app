@@ -21,7 +21,7 @@ class Frame extends Component {
     /*
       Get the ID of this tournament
      */
-    const tournamentId = window.location.pathname.split('/')[1];
+    const tournamentId = window.location.pathname.split('/')[1] || '177160';
 
     /*
       Fetch API data in parallel when component mounts

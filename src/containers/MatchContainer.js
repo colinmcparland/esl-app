@@ -35,7 +35,6 @@ class MatchContainer extends Component {
     Function to render all the game tiles
    */
   getGameTiles() {
-
     const {
       contestants,
       results
@@ -48,7 +47,7 @@ class MatchContainer extends Component {
     /*
       Load the match tiles only if the appropriate data has been loaded
      */
-    return results && contestants && results
+    return results
       .sort((a, b) => {
         /*
           Sort the games accordingly
@@ -116,6 +115,11 @@ class MatchContainer extends Component {
       sortGamesAsc
     } = this.state;
 
+    const {
+      results,
+      contestants
+    } = this.props;
+
     const FilterContainer = style.div`
       display: flex;
       justify-content: flex-end;
@@ -130,7 +134,7 @@ class MatchContainer extends Component {
             sortGamesAsc={ sortGamesAsc }
           ></Dropdown>
         </FilterContainer>
-        { this.getGameTiles() }
+        { results && contestants && this.getGameTiles() }
       </div>
     );
   }
