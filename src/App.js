@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Frame from 'containers/Frame';
 
 class App extends Component {
