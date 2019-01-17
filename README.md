@@ -1,7 +1,7 @@
 # ESL Programming Challenge
 
 Please note CORS should be disabled for this widget to work properly.
-Deployed with `Docker` at https://esl.tinybird.ca
+Deployed with `Docker` via Apache reverse proxy at https://esl.tinybird.ca
 
 ## Functionality
 This widget takes in a tournament ID via a URL pattern.  For example, to see data for tournament ID 177160, navigate to esl.tinybird.ca/177160.  Note the app defaults to tournament ID 177160 if given no URL pattern.
